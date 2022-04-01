@@ -1,0 +1,16 @@
+{
+    "name": "m3rke/newproj",
+    "description": "desription",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "m3rke",
+            "email": "mark-anishchenko@mail.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4 | ^8.0"
+    }
+}
