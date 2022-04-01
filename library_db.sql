@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 19, 2018 at 01:31 PM
--- Server version: 10.1.10-MariaDB
--- PHP Version: 7.0.2
+-- Хост: 127.0.0.1
+-- Время создания: Мар 31 2022 г., 08:59
+-- Версия сервера: 10.4.22-MariaDB
+-- Версия PHP: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `library_db`
+-- База данных: `library_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Структура таблицы `admin`
 --
 
 CREATE TABLE `admin` (
@@ -36,22 +37,16 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `admin`
+-- Дамп данных таблицы `admin`
 --
 
 INSERT INTO `admin` (`adminId`, `adminName`, `password`, `username`, `email`, `photo`) VALUES
-(1, 'Nwachi', '1234', 'fozzy', 'fozzyington@gmail.com', '2086_1527169280.png'),
-(3, 'Vanessa Smith', '1234', 'smith', 'vanessa@gmail.com', 'posts-images/7197_1531096754.jpeg'),
-(4, 'Somto Aruonu', '1234', 'somatic', 'somygee@gmail.com', 'posts-images/2368_1531097680.jpeg'),
-(5, 'Jephthah Ugwuoke', '1234', 'jeph', 'jeph@gmail.com', 'posts-images/153114422990.jpeg'),
-(6, 'Ebenezer Bamination', '1234', 'eben', 'eben@gmail.com', 'posts-images/153114439974.jpeg'),
-(7, 'Ebuka Onyekwere', '1234', 'ebuka200', 'ebuka@gmail.com', 'posts-images/153139138928.jpeg'),
-(8, 'Ebuka Onyekwere', '1234', 'ebuka200', 'ebuka@gmail.com', 'posts-images/153139155541.jpeg');
+(9, 'Mark Anishchenko', '1234', 'm3rke', 'mark-anishchenko@mail.ru', 'posts-images/164869631236.jpeg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `books`
+-- Структура таблицы `books`
 --
 
 CREATE TABLE `books` (
@@ -67,18 +62,20 @@ CREATE TABLE `books` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `books`
+-- Дамп данных таблицы `books`
 --
 
 INSERT INTO `books` (`bookId`, `bookTitle`, `author`, `ISBN`, `bookCopies`, `publisherName`, `available`, `categories`, `callNumber`) VALUES
-(5, 'How to Become a Billionaire', 'James Flitch', '1900-124-3242', '30', 'Robert Muller', 'YES', 'Morals', '0902334'),
-(6, 'Oliver Twist', 'Charles Dickey', '123-423-4-13', '12', 'African Books.Inc', 'YES', 'Fairy Tail', '0216230.'),
-(7, 'Death of a million starts', 'Breakthrough', '123', '3', 'Rexxon', 'YES', '123', '12');
+(9, '2eqwqw', 'qwfqwf', 'qwfqwfqwfq', '123', 'wnnw', 'YES', 'novel', '123123123123'),
+(10, 'Harry Potter', 'Joanne Rowling', '47457457457', '102', 'wnnw', 'YES', 'novel', '9234242342'),
+(11, 'qfqfqwf', 'qwfqfaa', 'qwfq21122', '22', 'wnnw', 'NO', '222', '12123123123'),
+(12, '5467547', '45745646', '4564654564', '45645646', '45645646', '??', '45646465', '456456456'),
+(13, '567567', '567567', '567567', '567567', '567567', '???', '7567567', '567567567');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `borrow`
+-- Структура таблицы `borrow`
 --
 
 CREATE TABLE `borrow` (
@@ -93,10 +90,19 @@ CREATE TABLE `borrow` (
   `fine` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Дамп данных таблицы `borrow`
+--
+
+INSERT INTO `borrow` (`borrowId`, `memberName`, `matricNo`, `bookName`, `borrowDate`, `returnDate`, `bookId`, `borrowStatus`, `fine`) VALUES
+(1, '2342', '34234', '2eqwqw', '', '', 9, 0, 'Paid'),
+(2, '2342', '34234', 'Harry Potter', '2022-03-11', '2022-03-14', 10, 0, 'Paid'),
+(3, '2342', '34234', '567567', '2022-03-31', '2022-04-03', 13, 0, 'Paid');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news`
+-- Структура таблицы `news`
 --
 
 CREATE TABLE `news` (
@@ -105,18 +111,18 @@ CREATE TABLE `news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `news`
+-- Дамп данных таблицы `news`
 --
 
 INSERT INTO `news` (`newsId`, `announcement`) VALUES
 (1, 'Welcome to Our Online Library Management System. You can have access to all our e-books at a really good affordable price!'),
-(6, 'Man don''t dance'),
-(9, 'Godfrey Okoye is going Places');
+(10, 'ergergegi\';iy\''),
+(11, '1234123123');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `students`
+-- Структура таблицы `students`
 --
 
 CREATE TABLE `students` (
@@ -134,76 +140,82 @@ CREATE TABLE `students` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `students`
+-- Дамп данных таблицы `students`
 --
 
 INSERT INTO `students` (`studentId`, `matric_no`, `password`, `username`, `email`, `dept`, `numOfBooks`, `moneyOwed`, `photo`, `phoneNumber`, `name`) VALUES
-(1, 'ADSE-9835', '1234', 'bams', 'fuzzy245.in@gmail.com', 'Software Engineering', 2, '1500', '4477_1526321327.jpeg', '08124579655', 'Nwachinemere Ibeagi'),
-(2, 'ADSE-9835', '1234', 'somty', 'somygee@gmail.com', 'Software Engineering', 2, '1234', '2093_1531223199.jpeg', '08124578966', 'Somtochukwu Ugwu');
+(5, '12312313', '12345', 'john32', 'john@ewf.ru', 'ererer', 0, 'null', '6882_1648696456.jpeg', 'john@ewf.ru', 'John'),
+(6, '34234', 'qweqwe', 'qweqwe', '2342@mF.rui', '234234', 0, 'null', '5211_1648698495.jpeg', '2342@mF.rui', '2342');
 
 --
--- Indexes for dumped tables
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `admin`
+-- Индексы таблицы `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`adminId`);
 
 --
--- Indexes for table `books`
+-- Индексы таблицы `books`
 --
 ALTER TABLE `books`
   ADD PRIMARY KEY (`bookId`);
 
 --
--- Indexes for table `borrow`
+-- Индексы таблицы `borrow`
 --
 ALTER TABLE `borrow`
   ADD PRIMARY KEY (`borrowId`);
 
 --
--- Indexes for table `news`
+-- Индексы таблицы `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`newsId`);
 
 --
--- Indexes for table `students`
+-- Индексы таблицы `students`
 --
 ALTER TABLE `students`
   ADD PRIMARY KEY (`studentId`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT для таблицы `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `adminId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `adminId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
--- AUTO_INCREMENT for table `books`
+-- AUTO_INCREMENT для таблицы `books`
 --
 ALTER TABLE `books`
-  MODIFY `bookId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `bookId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
--- AUTO_INCREMENT for table `borrow`
+-- AUTO_INCREMENT для таблицы `borrow`
 --
 ALTER TABLE `borrow`
-  MODIFY `borrowId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `borrowId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `news`
+-- AUTO_INCREMENT для таблицы `news`
 --
 ALTER TABLE `news`
-  MODIFY `newsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `newsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
--- AUTO_INCREMENT for table `students`
+-- AUTO_INCREMENT для таблицы `students`
 --
 ALTER TABLE `students`
-  MODIFY `studentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `studentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
